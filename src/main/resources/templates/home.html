@@ -8,19 +8,18 @@
     <title>Home</title>
 </head>
 <body>
-<!-- h1 th:text="${welcomeMessage}">Hello, homepage!</h1-->
-<!-- <h1 th:each="msg: ${greetings}" th:text="${msg}">Hello, homepage!</h1> -->
-<!-- <h1 th:if="${msg.contains('goodbye')}" th:text="${msg}">Hello, homepage!</h1> -->
-
-<!-- <p th:text="${cat.name+' is ' + cat.color}"></p>
-<p th:if="${cat.maxSpeed > 10}">Pretty Fast</p> -->
-
-
 
 <form th:object="${newMessage}" th:action="@{/home}" action="#" method="POST">
     <input th:field="*{text}" type="text">
     <input type="submit">
 </form>
+
+<!-- Tricky one because of wrong method attached , no data is actually submitted to the backend-->
+<!-- <form action="#" th:action="@{'/home'}" th:object="${messageForm}" method="GET">
+   <label for="highFiveText">Send a high five to someone: </label>
+   <input type="text" id="highFiveText" name="highFiveText" th:field="*{text}">
+   <input type="submit">
+</form> -->
 <h1 th:each="msg : ${greetings}" th:text="${msg}" th:unless="${msg.contains('Goodbye')}">Hello, homepage!</h1>
    
 
